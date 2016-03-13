@@ -6,7 +6,7 @@ import scala.util.Try
 
 trait Config {
   protected lazy val config = ConfigFactory.load()
-  protected lazy val httpConfig = Try(config.getConfig("http")).getOrElse(ConfigFactory.empty())
-  lazy val httpInterface = Try(httpConfig.getString("interface")).getOrElse("0.0.0.0")
-  lazy val httpPort: Int = Try(httpConfig.getInt("port")).getOrElse(0)
+  protected lazy val exampleHttpConfig = Try(config.getConfig("http").getConfig("exampleserver")).getOrElse(ConfigFactory.empty())
+  lazy val exampleHttpInterface = Try(exampleHttpConfig.getString("interface")).getOrElse("0.0.0.0")
+  lazy val exampleHttpPort: Int = Try(exampleHttpConfig.getInt("port")).getOrElse(0)
 }
